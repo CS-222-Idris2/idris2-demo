@@ -1,0 +1,24 @@
+import Data.Vect
+
+allLengths : List String -> List Nat
+allLengths [] = ?hole
+allLengths (x :: xs) = ?allLengths_rhs_2
+
+fourInts : Vect 4 Int
+fourInts = [0, 1, 2, 3]
+
+sixInts : Vect 6 Int
+sixInts = [4, 5, 6, 7, 8, 9]
+
+tenInts : Vect 10 Int
+tenInts = fourInts ++ sixInts
+
+concat : Vect n a -> Vect m a -> Vect (n + m) a
+concat [] [] = []
+concat [] ys = ys
+concat xs [] = xs
+concat (x :: xs) ys = x :: concat xs ys
+
+addVect : (xs : Vect m e) -> (ys : Vect n e) -> Vect (m + n) e
+addVect []      ys = ys
+addVect (x::xs) ys = x :: xs ++ ys

@@ -1,0 +1,29 @@
+fac : Int -> Int
+fac 0 = 1
+fac n = n * fac (n-1)
+
+fib : Int -> Int
+fib 0 = 0
+fib 1 = 1
+fib n = fib (n-1) + fib (n-2)
+
+side: Double -> Double -> Double
+side a b = sqrt (a*a + b*b)
+
+double : Num a => a -> a
+double x = x + x
+
+check : Double -> Double -> Double
+check a b = a + b
+
+-- MyList : Type
+-- MyList = Nil | Cons Int MyList
+myfst : (a,b) -> a
+myfst (x,y) = x
+
+MyPair : a -> b -> (a, b)
+MyPair a b = (a, b)
+
+main : IO()
+main = do
+    print $ cast String (1.0 + 2.0)

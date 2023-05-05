@@ -1,0 +1,20 @@
+import Data.List
+
+length : {t2 : _} -> (t1, t2) -> Nat
+length (_, b) = case t2 of
+                     (_, _) => 1 + (length b)
+                     _ => 2
+
+insertAtAll : a -> List a -> List (List a)
+insertAtAll x [] = [[x]]
+insertAtAll x (y :: ys) = (x :: y :: ys) :: (map (\p => y :: p) (insertAtAll x ys))
+
+permute : List a -> List (List a)
+permute [] = []
+permute (x :: xs) = case xs of
+    [] => [[x]]
+    _ => concatMap (\p => insertAtAll x p) (permute xs)
+
+unique : List a -> List a
+unique [] = []
+unique (x :: xs) = x :: (unique (filter (\y => not (x == y)) xs))

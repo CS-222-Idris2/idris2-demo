@@ -1,0 +1,9 @@
+import Data.Vect
+
+data Elem : a -> Vect k a -> Type where
+    Here : Elem x (x :: xs)
+    There : (later : Elem x xs) -> Elem x (y :: xs)
+
+removeElem : (x : a) -> (xs : Vect (S n) a) -> (prf : Elem x xs) -> Vect n a
+removeElem x (x :: xs) Here = xs
+removeElem x (y :: []) There later = impossible later
